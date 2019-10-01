@@ -79,6 +79,9 @@ RUN echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > \
 
 COPY --from=stage1 /tools/Xilinx /tools/Xilinx
 
+# add device tree repo (as root)
+RUN git clone --depth 1 https://github.com/Xilinx/device-tree-xlnx.git /tools/Xilinx/Vivado/2019.1/device-tree-xlnx
+
 RUN adduser --disabled-password --gecos '' vivado
 USER vivado
 WORKDIR /home/vivado
@@ -90,6 +93,9 @@ RUN echo "source /tools/Xilinx/Vivado/2019.1/settings64.sh" >> /home/vivado/.bas
 
 # customize gui (font scaling 125%)
 COPY --chown=vivado:vivado vivado.xml /home/vivado/.Xilinx/Vivado/2019.1/vivado.xml
+
+# set path for DT repo
+COPY --chown=vivado:vivado com.xilinx.sdk.sw.prefs /home/vivado/.Xilinx/SDK/2019.1/.settings/com.xilinx.sdk.sw.prefs
 
 # add U96 board files
 ADD /board_files.tar.gz /tools/Xilinx/Vivado/2019.1/data/boards/board_files/

@@ -70,7 +70,11 @@ RUN echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > \
         libprotobuf-dev \
         protobuf-compiler \
         python-protobuf \
-        python-pip && \
+        python-pip \
+	net-tools \
+	iputils-ping \
+	usbutils \
+	isc-dhcp-client && \
         pip install intelhex && \
         echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
         locale-gen && \

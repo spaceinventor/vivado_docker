@@ -103,3 +103,6 @@ COPY --chown=vivado:vivado com.xilinx.sdk.sw.prefs /home/vivado/.Xilinx/SDK/2019
 
 # add U96 board files
 ADD /board_files.tar.gz /tools/Xilinx/Vivado/2019.1/data/boards/board_files/
+
+# for vivado simulation scripts
+RUN pip install lxml

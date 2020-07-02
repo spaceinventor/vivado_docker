@@ -70,7 +70,11 @@ RUN echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > \
         libprotobuf-dev \
         protobuf-compiler \
         python-protobuf \
-        python-pip && \
+        python-pip \
+	net-tools \
+	iputils-ping \
+	usbutils \
+	isc-dhcp-client && \
         pip install intelhex && \
         echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
         locale-gen && \
@@ -99,3 +103,6 @@ COPY --chown=vivado:vivado com.xilinx.sdk.sw.prefs /home/vivado/.Xilinx/SDK/2019
 
 # add U96 board files
 ADD /board_files.tar.gz /tools/Xilinx/Vivado/2019.1/data/boards/board_files/
+
+# for vivado simulation scripts
+RUN pip install lxml

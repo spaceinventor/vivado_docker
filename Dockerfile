@@ -80,7 +80,7 @@ RUN echo 'APT::Install-Recommends "0";\nAPT::Install-Suggests "0";' > \
 COPY --from=stage1 /tools/Xilinx /tools/Xilinx
 
 # add device tree repo (as root)
-RUN git clone --depth 1 https://github.com/Xilinx/device-tree-xlnx.git /tools/Xilinx/Vivado/2019.1/device-tree-xlnx
+RUN git clone -b xilinx-v2019.1 --depth 1 https://github.com/Xilinx/device-tree-xlnx.git /tools/Xilinx/Vivado/2019.1/device-tree-xlnx
 
 RUN adduser --disabled-password --gecos '' vivado
 USER vivado

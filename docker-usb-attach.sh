@@ -1,6 +1,6 @@
 #!/bin/bash
 
-XILINX_USB_VENDEV=(0403:6014 03fd:000f)
+XILINX_USB_VENDEV=(0403:6014 03fd:000f 03fd:0013 03fd:0008)
 
 # args: docker_name BUSPATH BUSDEV
 function attach_usb_node {

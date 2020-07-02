@@ -18,6 +18,7 @@ function attach_usb_node {
 	exit 3
     fi
 
+    docker exec -u 0 -it $DOCKER_ID rm -f $USB_PATH/*
     docker exec -u 0 -it $DOCKER_ID mkdir -p $USB_PATH
     docker exec -u 0 -it $DOCKER_ID mknod $USB_FILE c $MAJ $MIN
     docker exec -u 0 -it $DOCKER_ID chmod 777 $USB_FILE
